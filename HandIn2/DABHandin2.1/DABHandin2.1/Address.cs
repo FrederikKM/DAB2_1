@@ -9,6 +9,6 @@ namespace DABHandin2._1
 
         public City City { get; set; }
         public List<Person> Persons { get; set; }
-        public AddressType AddressType { get; set; }
+        public List<AddressType> AddressTypes { get; set; }
     }
 }

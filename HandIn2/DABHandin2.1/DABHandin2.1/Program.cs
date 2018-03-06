@@ -64,10 +64,24 @@ namespace DABHandin2._1
             {
                 Type = "Secondary"
             };
+            var addressType3 = new AddressType()
+            {
+                Type = "Primary"
+            };
+            var addressType4 = new AddressType()
+            {
+                Type = "Secondary"
+            };
+
             var addressTypes = new List<AddressType>
             {
                 addressType1,
                 addressType2
+            };
+            var addressTypes2 = new List<AddressType>
+            {
+                addressType3,
+                addressType4
             };
 
 
@@ -122,10 +136,10 @@ namespace DABHandin2._1
 
             telephoneCompany.TelephoneNumbers = telephoneNumbers;
 
-            address1.AddressType = addressType1;
+            address1.AddressTypes = addressTypes;
             address1.Persons = personIndex;
             address1.City = city;
-            address2.AddressType = addressType2;
+            address2.AddressTypes = addressTypes;
             address2.Persons = personIndex;
             address2.City = city;
 
@@ -174,7 +188,7 @@ namespace DABHandin2._1
             Console.WriteLine($"Street name: {address.StreetName} HouseNumber: {address.HouseNumber}");
             foreach (var person in address.Persons)
             {
-                Console.WriteLine($"Name of person; {getName(person)} Context: {person.AddressTypes.Find(o => o.Address == address).Type}");
+                Console.WriteLine($"Name of person; {getName(person)} Context: {person.AddressTypes.Find(at => at.Address == address).Type}");
             }
 
             Console.WriteLine();
@@ -200,11 +214,11 @@ namespace DABHandin2._1
             Console.WriteLine();
 
             Console.WriteLine("Addresses:");
-            foreach (var addressType in person.AddressTypes)
+            foreach (var address in person.AlternativeAddresses)
             {
-                Console.WriteLine($"   Address type: {addressType.Type}");
-                Console.WriteLine($"   Street name: {addressType.Address.StreetName} HouseNumber: {addressType.Address.HouseNumber}");
-                Console.WriteLine($"   City: {addressType.Address.City.Name} Zip-code: {addressType.Address.City.ZipCode.Zip} Country code: {addressType.Address.City.ZipCode.CountryCode.Code}");
+                Console.WriteLine($"   Address type: {address.AddressTypes.Find(a => a.Address == address).Type}");
+                Console.WriteLine($"   Street name: {address.StreetName} HouseNumber: {address.HouseNumber}");
+                Console.WriteLine($"   City: {address.City.Name} Zip-code: {address.City.ZipCode.Zip} Country code: {address.City.ZipCode.CountryCode.Code}");
                 Console.WriteLine();
             }
 
