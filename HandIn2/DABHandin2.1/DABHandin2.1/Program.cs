@@ -64,24 +64,12 @@ namespace DABHandin2._1
             {
                 Type = "Secondary"
             };
-            var addressType3 = new AddressType()
-            {
-                Type = "Primary"
-            };
-            var addressType4 = new AddressType()
-            {
-                Type = "Secondary"
-            };
+
 
             var addressTypes = new List<AddressType>
             {
                 addressType1,
                 addressType2
-            };
-            var addressTypes2 = new List<AddressType>
-            {
-                addressType3,
-                addressType4
             };
 
 
