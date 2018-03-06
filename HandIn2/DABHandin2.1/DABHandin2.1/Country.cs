@@ -8,11 +8,13 @@ namespace DABHandin2._1
 {
     class Country
     {
-        public List<Adress> Adresses { get; set; }
+        public List<Address> Adresses { get; set; }
+        public string CountryCode { get; set; }
 
-        public Country(List<Adress> adresses)
+        public Country(List<Address> adresses, string countryCode)
         {
             Adresses = adresses;
+            CountryCode = countryCode;
         }
     }
 }

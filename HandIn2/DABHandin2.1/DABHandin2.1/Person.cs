@@ -10,29 +10,29 @@ namespace DABHandin2._1
     {
         public Context PersonContext { get; set; }
         public Mail PersonMail { get; set; }
-        public List<HelpClass> HelpClass { get; set; }
+        public List<AddressType> AddressTypes { get; set; }
         public List<Phone> PersonPhone { get; set; }
-        public Adress RegisteredAdress { get; set; }
+        public Address RegisteredAddress { get; set; }
 
-        public Person(string personContext,string mailAdress,Adress registerAdress,List<HelpClass> helpClass,List<Phone> phoneNums)
+        public Person(string personContext,string mailAdress,Address registerAddress,List<AddressType> helpClass,List<Phone> phoneNums)
         {
             PersonContext=new Context(personContext);
             PersonMail = new Mail(mailAdress);
-            HelpClass = helpClass;
+            AddressTypes = helpClass;
             PersonPhone = phoneNums;
-            RegisteredAdress = registerAdress;
+            RegisteredAddress = registerAddress;
         }
 
         public void PresentPerson()
         {
             Console.WriteLine("The persons Context is: " + PersonContext.PersonContext);
-            Console.WriteLine("Her/his Registered adress is: "+ RegisteredAdress.AdressName);
+            Console.WriteLine("Her/his Registered Address is: "+ RegisteredAddress.AdressName);
             Console.WriteLine("Her/his Mailadress is : " +PersonMail.MailAdress);
             Console.WriteLine("");
             Console.WriteLine("He/She is connected to following adresses:");
-            foreach (var adress in HelpClass)
+            foreach (var address in AddressTypes)
             {
-                Console.WriteLine("AdressType: " + adress.Type + " is at: " + adress.Adress.AdressName);
+                Console.WriteLine("AdressType: " + address.Type + " is at: " + address.Address.AdressName);
             }
 
             Console.WriteLine("");
@@ -43,7 +43,7 @@ namespace DABHandin2._1
             }
             Console.WriteLine("_______________________________________________________________");
             Console.WriteLine("");
-            
+
         }
 
     }

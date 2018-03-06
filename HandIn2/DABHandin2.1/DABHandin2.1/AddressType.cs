@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace DABHandin2._1
 {
-    class HelpClass
+    class AddressType
     {
         public String Type { get; set; }
-        public Adress Adress { get; set; }
+        public Address Address { get; set; }
 
-        public HelpClass(Adress adress, String type)
+        public AddressType(Address Address, String type)
         {
             Type = type;
-            Adress = adress;
+            Address = Address;
         }
     }
 }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DABHandin2._1
 {
-    class Adress
+    class Address
     {
         public string AdressName { get; set; }
 
-        public Adress(string adressName)
+        public Address(string adressName)
         {
             AdressName = adressName;
         }
