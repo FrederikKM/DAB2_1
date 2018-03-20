@@ -15,8 +15,7 @@ namespace DAB2_2.Lib
     
     public partial class DABHandin_2_2Entities : DbContext
     {
-        public DABHandin_2_2Entities()
-            : base("name=DABHandin_2_2Entities")
+        public DABHandin_2_2Entities() : base("name=DABHandin_2_2Entities")
         {
         }
     

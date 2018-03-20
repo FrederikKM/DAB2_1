@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DAB2_2.Lib
 {
-    public class Class1
+    public interface IUnitOfWork
     {
+        void Save();
     }
 }
