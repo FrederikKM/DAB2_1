@@ -1,7 +1,0 @@
-c:\users\karsten johansen\source\repos\DABHandin2.1\DABHandin2.1\obj\Debug\DABHandin2.1.csprojResolveAssemblyReference.cache
-c:\users\karsten johansen\source\repos\DABHandin2.1\DABHandin2.1\obj\Debug\DABHandin2.1.csproj.CoreCompileInputs.cache
-c:\users\karsten johansen\source\repos\DABHandin2.1\DABHandin2.1\bin\Debug\DABHandin2.1.exe.config
-c:\users\karsten johansen\source\repos\DABHandin2.1\DABHandin2.1\bin\Debug\DABHandin2.1.exe
-c:\users\karsten johansen\source\repos\DABHandin2.1\DABHandin2.1\bin\Debug\DABHandin2.1.pdb
-c:\users\karsten johansen\source\repos\DABHandin2.1\DABHandin2.1\obj\Debug\DABHandin2.1.exe
-c:\users\karsten johansen\source\repos\DABHandin2.1\DABHandin2.1\obj\Debug\DABHandin2.1.pdb
