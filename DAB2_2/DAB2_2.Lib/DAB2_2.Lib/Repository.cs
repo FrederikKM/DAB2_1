@@ -17,7 +17,7 @@ namespace DAB2_2.Lib
             _context = context;
         }
 
-        public async void Create(T t)
+        public void Create(T t)
         {
             this.Entities.Add(t);
         }
@@ -27,7 +27,7 @@ namespace DAB2_2.Lib
             return this.Entities.Find(id);
         }
 
-        public async void Update(int id, T t)
+        public void Update(int id, T t)
         {
         }
 

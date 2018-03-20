@@ -11,29 +11,25 @@ namespace DAB2_2.Test
     {
         static void Main(string[] args)
         {
+            var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
+
+
+
             var context = new DAB2_2DBContext();
             var uow = new UnitOfWork(context);
 
-            uow.AddressRepository.Create(new Address
+            uow.ZipCodeRepository.Create(new ZipCode()
             {
-                City = new City
+                Zip = "8541",
+                CountryCode = new CountryCode()
                 {
-                    Name = "Aarhus",
-                    Postnummer = "8200",
-                    ZipCode = new ZipCode
-                    {
-                        Zip = "8200",
-                    }
-                },
-                HouseNumber = "Housenumber",
-                StreetName = "streetname"
-
+                    Code = "DK"
+                }
             });
 
             uow.Save();
 
             Console.WriteLine(uow.AddressRepository.Get(0).HouseNumber);
-
 
         }
     }

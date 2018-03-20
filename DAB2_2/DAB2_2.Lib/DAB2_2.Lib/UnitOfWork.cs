@@ -8,11 +8,19 @@
         {
             _context = context;
             AddressRepository = new Repository<Address>(context);
+            AddressTypeRepository = new Repository<AddressType>(context);
+            CityRepository = new Repository<City>(context);
+            CountryCodeRepository = new Repository<CountryCode>(context);
+            PersonRepository = new Repository<Person>(context);
+            TelephoneCompanyRepository = new Repository<TelephoneCompany>(context);
+            TelephoneCompanyRepository = new Repository<TelephoneCompany>(context);
+            TelephoneNumberRepository = new Repository<TelephoneNumber>(context);
+            ZipCodeRepository = new Repository<ZipCode>(context);
         }
 
-        public async void Save()
+        public void Save()
         {
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public IRepository<Address> AddressRepository { get; set; }
@@ -23,11 +31,5 @@
         public IRepository<TelephoneCompany> TelephoneCompanyRepository { get; set; }
         public IRepository<TelephoneNumber> TelephoneNumberRepository { get; set; }
         public IRepository<ZipCode> ZipCodeRepository { get; set; }
-
-
-
-
-
-
     }
 }
