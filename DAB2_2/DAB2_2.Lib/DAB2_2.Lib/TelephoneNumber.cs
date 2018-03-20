@@ -16,7 +16,7 @@ namespace DAB2_2.Lib
     {
         public int TelephoneNumberId { get; set; }
         public string Number { get; set; }
-        public string Usere { get; set; }
+        public string Usee { get; set; }
         public Nullable<int> PersonId { get; set; }
         public int TelephoneCompanyId { get; set; }
     

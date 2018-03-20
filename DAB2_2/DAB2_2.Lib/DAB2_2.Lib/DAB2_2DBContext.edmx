@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DABHandin_2_2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DAB2_2DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -65,16 +65,6 @@
           <Property Name="PersonId" Type="int" Nullable="false" />
           <Property Name="AdresseTypeID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TelephoneCompany">
           <Key>
             <PropertyRef Name="TelephoneCompanyId" />
@@ -88,7 +78,7 @@
           </Key>
           <Property Name="TelephoneNumberId" Type="int" Nullable="false" />
           <Property Name="Number" Type="varchar" MaxLength="1" Nullable="false" />
-          <Property Name="Usere" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Usee" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="PersonId" Type="int" />
           <Property Name="TelephoneCompanyId" Type="int" Nullable="false" />
         </EntityType>
@@ -228,7 +218,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DABHandin_2_2ModelStoreContainer">
+        <EntityContainer Name="DAB2_2DBModelStoreContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AddressType" EntityType="Self.AddressType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
@@ -236,7 +226,6 @@
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PersonAddress" EntityType="Self.PersonAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PersonAddressType" EntityType="Self.PersonAddressType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TelephoneCompany" EntityType="Self.TelephoneCompany" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TelephoneNumber" EntityType="Self.TelephoneNumber" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZipCode" EntityType="Self.ZipCode" Schema="dbo" store:Type="Tables" />
@@ -285,7 +274,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DABHandin_2_2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DAB2_2DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -341,16 +330,6 @@
           <NavigationProperty Name="Addresses" Relationship="Self.PersonAddress" FromRole="Person" ToRole="Address" />
           <NavigationProperty Name="AddressTypes" Relationship="Self.PersonAddressType" FromRole="Person" ToRole="AddressType" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="TelephoneCompany">
           <Key>
             <PropertyRef Name="TelephoneCompanyId" />
@@ -365,7 +344,7 @@
           </Key>
           <Property Name="TelephoneNumberId" Type="Int32" Nullable="false" />
           <Property Name="Number" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Usere" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Usee" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PersonId" Type="Int32" />
           <Property Name="TelephoneCompanyId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Person" Relationship="Self.fk_TelephoneNumber" FromRole="TelephoneNumber" ToRole="Person" />
@@ -465,13 +444,12 @@
           <End Role="Person" Type="Self.Person" Multiplicity="*" />
           <End Role="AddressType" Type="Self.AddressType" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="DABHandin_2_2Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DAB2_2DBContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Addresses" EntityType="Self.Address" />
           <EntitySet Name="AddressTypes" EntityType="Self.AddressType" />
           <EntitySet Name="Cities" EntityType="Self.City" />
           <EntitySet Name="CountryCodes" EntityType="Self.CountryCode" />
           <EntitySet Name="People" EntityType="Self.Person" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TelephoneCompanies" EntityType="Self.TelephoneCompany" />
           <EntitySet Name="TelephoneNumbers" EntityType="Self.TelephoneNumber" />
           <EntitySet Name="ZipCodes" EntityType="Self.ZipCode" />
@@ -513,9 +491,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DABHandin_2_2ModelStoreContainer" CdmEntityContainer="DABHandin_2_2Entities">
+        <EntityContainerMapping StorageEntityContainer="DAB2_2DBModelStoreContainer" CdmEntityContainer="DAB2_2DBContext">
           <EntitySetMapping Name="Addresses">
-            <EntityTypeMapping TypeName="DABHandin_2_2Model.Address">
+            <EntityTypeMapping TypeName="DAB2_2DBModel.Address">
               <MappingFragment StoreEntitySet="Address">
                 <ScalarProperty Name="AddressId" ColumnName="AddressId" />
                 <ScalarProperty Name="StreetName" ColumnName="StreetName" />
@@ -525,7 +503,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AddressTypes">
-            <EntityTypeMapping TypeName="DABHandin_2_2Model.AddressType">
+            <EntityTypeMapping TypeName="DAB2_2DBModel.AddressType">
               <MappingFragment StoreEntitySet="AddressType">
                 <ScalarProperty Name="AdresseTypeID" ColumnName="AdresseTypeID" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
@@ -534,7 +512,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cities">
-            <EntityTypeMapping TypeName="DABHandin_2_2Model.City">
+            <EntityTypeMapping TypeName="DAB2_2DBModel.City">
               <MappingFragment StoreEntitySet="City">
                 <ScalarProperty Name="CityId" ColumnName="CityId" />
                 <ScalarProperty Name="Postnummer" ColumnName="Postnummer" />
@@ -544,7 +522,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CountryCodes">
-            <EntityTypeMapping TypeName="DABHandin_2_2Model.CountryCode">
+            <EntityTypeMapping TypeName="DAB2_2DBModel.CountryCode">
               <MappingFragment StoreEntitySet="CountryCode">
                 <ScalarProperty Name="CountryCodeId" ColumnName="CountryCodeId" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
@@ -552,7 +530,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="People">
-            <EntityTypeMapping TypeName="DABHandin_2_2Model.Person">
+            <EntityTypeMapping TypeName="DAB2_2DBModel.Person">
               <MappingFragment StoreEntitySet="Person">
                 <ScalarProperty Name="PersonId" ColumnName="PersonId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -563,19 +541,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DABHandin_2_2Model.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TelephoneCompanies">
-            <EntityTypeMapping TypeName="DABHandin_2_2Model.TelephoneCompany">
+            <EntityTypeMapping TypeName="DAB2_2DBModel.TelephoneCompany">
               <MappingFragment StoreEntitySet="TelephoneCompany">
                 <ScalarProperty Name="TelephoneCompanyId" ColumnName="TelephoneCompanyId" />
                 <ScalarProperty Name="Company" ColumnName="Company" />
@@ -583,18 +550,18 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TelephoneNumbers">
-            <EntityTypeMapping TypeName="DABHandin_2_2Model.TelephoneNumber">
+            <EntityTypeMapping TypeName="DAB2_2DBModel.TelephoneNumber">
               <MappingFragment StoreEntitySet="TelephoneNumber">
                 <ScalarProperty Name="TelephoneNumberId" ColumnName="TelephoneNumberId" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="Usere" ColumnName="Usere" />
+                <ScalarProperty Name="Usee" ColumnName="Usee" />
                 <ScalarProperty Name="PersonId" ColumnName="PersonId" />
                 <ScalarProperty Name="TelephoneCompanyId" ColumnName="TelephoneCompanyId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ZipCodes">
-            <EntityTypeMapping TypeName="DABHandin_2_2Model.ZipCode">
+            <EntityTypeMapping TypeName="DAB2_2DBModel.ZipCode">
               <MappingFragment StoreEntitySet="ZipCode">
                 <ScalarProperty Name="ZipCodeId" ColumnName="ZipCodeId" />
                 <ScalarProperty Name="Zip" ColumnName="Zip" />
@@ -602,7 +569,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="PersonAddress" TypeName="DABHandin_2_2Model.PersonAddress" StoreEntitySet="PersonAddress">
+          <AssociationSetMapping Name="PersonAddress" TypeName="DAB2_2DBModel.PersonAddress" StoreEntitySet="PersonAddress">
             <EndProperty Name="Person">
               <ScalarProperty Name="PersonId" ColumnName="PersonId" />
             </EndProperty>
@@ -610,7 +577,7 @@
               <ScalarProperty Name="AddressId" ColumnName="AddressId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="PersonAddressType" TypeName="DABHandin_2_2Model.PersonAddressType" StoreEntitySet="PersonAddressType">
+          <AssociationSetMapping Name="PersonAddressType" TypeName="DAB2_2DBModel.PersonAddressType" StoreEntitySet="PersonAddressType">
             <EndProperty Name="Person">
               <ScalarProperty Name="PersonId" ColumnName="PersonId" />
             </EndProperty>

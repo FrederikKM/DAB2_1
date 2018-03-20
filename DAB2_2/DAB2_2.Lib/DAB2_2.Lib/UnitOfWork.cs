@@ -2,9 +2,9 @@
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DABHandin_2_2Entities _context;
+        private readonly DAB2_2DBContext _context;
 
-        public UnitOfWork(DABHandin_2_2Entities context)
+        public UnitOfWork(DAB2_2DBContext context)
         {
             _context = context;
             AddressRepository = new Repository<Address>(context);
@@ -15,8 +15,7 @@
             await _context.SaveChangesAsync();
         }
 
-        public IRepository<Address> AddressRepository { get;  }
-
+        public IRepository<Address> AddressRepository { get; set; }
         public IRepository<AddressType> AddressTypeRepository { get; set; }
         public IRepository<City> CityRepository { get; set; }
         public IRepository<CountryCode> CountryCodeRepository { get; set; }

@@ -9,10 +9,10 @@ namespace DAB2_2.Lib
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly DABHandin_2_2Entities _context;
+        private readonly DAB2_2DBContext _context;
         private IDbSet<T> entities;
 
-        public Repository(DABHandin_2_2Entities context) 
+        public Repository(DAB2_2DBContext context)
         {
             _context = context;
         }

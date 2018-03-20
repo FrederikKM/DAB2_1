@@ -11,7 +11,7 @@ namespace DAB2_2.Test
     {
         static void Main(string[] args)
         {
-            var context = new DABHandin_2_2Entities();
+            var context = new DAB2_2DBContext();
             var uow = new UnitOfWork(context);
 
             uow.AddressRepository.Create(new Address

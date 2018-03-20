@@ -13,9 +13,10 @@ namespace DAB2_2.Lib
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DABHandin_2_2Entities : DbContext
+    public partial class DAB2_2DBContext : DbContext
     {
-        public DABHandin_2_2Entities() : base("name=DABHandin_2_2Entities")
+        public DAB2_2DBContext()
+            : base("name=DAB2_2DBContext")
         {
         }
     
@@ -29,7 +30,6 @@ namespace DAB2_2.Lib
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<CountryCode> CountryCodes { get; set; }
         public virtual DbSet<Person> People { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TelephoneCompany> TelephoneCompanies { get; set; }
         public virtual DbSet<TelephoneNumber> TelephoneNumbers { get; set; }
         public virtual DbSet<ZipCode> ZipCodes { get; set; }
