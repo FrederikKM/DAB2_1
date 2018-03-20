@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAB2_2", "DAB2_2\DAB2_2.csproj", "{5AD1742D-023C-4F43-8ABB-7D026C74A40A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAB2_2.TestApp", "DAB2_2.TestApp\DAB2_2.TestApp.csproj", "{F86B1956-D54A-41E3-8D19-9B8804FD334B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AD1742D-023C-4F43-8ABB-7D026C74A40A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AD1742D-023C-4F43-8ABB-7D026C74A40A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AD1742D-023C-4F43-8ABB-7D026C74A40A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AD1742D-023C-4F43-8ABB-7D026C74A40A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F86B1956-D54A-41E3-8D19-9B8804FD334B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F86B1956-D54A-41E3-8D19-9B8804FD334B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F86B1956-D54A-41E3-8D19-9B8804FD334B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F86B1956-D54A-41E3-8D19-9B8804FD334B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {251EDB62-0BAB-42D4-9E65-46D4015A3B5D}
+	EndGlobalSection
+EndGlobal
