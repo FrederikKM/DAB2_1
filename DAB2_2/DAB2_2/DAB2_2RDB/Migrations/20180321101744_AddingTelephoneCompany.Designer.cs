@@ -11,9 +11,10 @@ using System;
 namespace DAB2_2RDB.Migrations
 {
     [DbContext(typeof(Dab2_2RdbContext))]
-    partial class Dab2_2RdbContextModelSnapshot : ModelSnapshot
+    [Migration("20180321101744_AddingTelephoneCompany")]
+    partial class AddingTelephoneCompany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
