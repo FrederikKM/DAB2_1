@@ -27,6 +27,8 @@ namespace DAB2_2
             var personAddressRepo = new UnionRepository<PersonAddress>(context);
             var addressTypeRepo = new Repository<AddressType>(context);
             var personAddressTypeRepo = new UnionRepository<PersonAddressType>(context);
+            var cityRepo = new Repository<City>(context);
+            var countryCodeRepo = new Repository<CountryCode>(context);
 
             var person = new Person
             {
@@ -77,7 +79,21 @@ namespace DAB2_2
                 Person = person,
                 AddressType = addressType
             };
-            
+
+            var city = new City()
+            {
+                Name = "Skødstrup",
+                ZipCode = "8541",
+            };
+            city.Addresses.Add(address);
+
+            var countryCode = new CountryCode()
+            {
+                City = city,
+                Code = "Dk"
+            };
+
+
 
             // Create
             // Person
@@ -86,6 +102,8 @@ namespace DAB2_2
             await telephoneCompanyRepo.CreateAsync(telephoneCompany);
             await personAddressRepo.CreateAsync(personAddress);
             await personAddressTypeRepo.CreateAsync(personAddressType);
+            await cityRepo.CreateAsync(city);
+            await countryCodeRepo.CreateAsync(countryCode);
 
             await uow.SaveAsync();
 
@@ -114,12 +132,12 @@ namespace DAB2_2
             await uow.SaveAsync();
 
 
-
-
             // Delete
             personRepo.Delete(person);
             telephoneCompanyRepo.Delete(telephoneCompany);
             addressRepo.Delete(address);
+            cityRepo.Delete(city);
+            countryCodeRepo.Delete(countryCode);
 
             await uow.SaveAsync();
         }

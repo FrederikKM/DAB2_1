@@ -25,11 +25,15 @@ namespace DAB2_2RDB.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("CityId");
+
                     b.Property<string>("HouseNumber");
 
                     b.Property<string>("StreetName");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CityId");
 
                     b.ToTable("Addresses");
                 });
@@ -48,6 +52,37 @@ namespace DAB2_2RDB.Migrations
                     b.HasIndex("AddressId");
 
                     b.ToTable("AddressTypes");
+                });
+
+            modelBuilder.Entity("DAB2_2RDB.Models.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CountryCodeId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("ZipCode");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryCodeId")
+                        .IsUnique();
+
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("DAB2_2RDB.Models.CountryCode", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CountryCodes");
                 });
 
             modelBuilder.Entity("DAB2_2RDB.Models.Person", b =>
@@ -135,11 +170,27 @@ namespace DAB2_2RDB.Migrations
                     b.ToTable("TelephoneCompanies");
                 });
 
+            modelBuilder.Entity("DAB2_2RDB.Models.Address", b =>
+                {
+                    b.HasOne("DAB2_2RDB.Models.City", "City")
+                        .WithMany("Addresses")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("DAB2_2RDB.Models.AddressType", b =>
                 {
                     b.HasOne("DAB2_2RDB.Models.Address", "Address")
                         .WithMany("AddressTypes")
                         .HasForeignKey("AddressId");
+                });
+
+            modelBuilder.Entity("DAB2_2RDB.Models.City", b =>
+                {
+                    b.HasOne("DAB2_2RDB.Models.CountryCode", "CountryCode")
+                        .WithOne("City")
+                        .HasForeignKey("DAB2_2RDB.Models.City", "CountryCodeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DAB2_2RDB.Models.PersonAddress", b =>

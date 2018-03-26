@@ -13,5 +13,8 @@ namespace DAB2_2RDB.Models
 
         public virtual ICollection<PersonAddress> PersonAddresses { get; set; } = new List<PersonAddress>();
         public virtual ICollection<AddressType> AddressTypes { get; set; } = new List<AddressType>();
+
+        public int CityId { get; set; }
+        public virtual City City { get; set; }
     }
 }
