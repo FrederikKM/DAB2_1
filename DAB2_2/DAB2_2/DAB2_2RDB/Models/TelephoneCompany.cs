@@ -11,6 +11,6 @@ namespace DAB2_2RDB.Models
         [Required]
         public string CompanyName { get; set; }
 
-        public ICollection<PhoneNumber> PhoneNumbers { get; set; } = new List<PhoneNumber>();
+        public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; } = new List<PhoneNumber>();
     }
 }

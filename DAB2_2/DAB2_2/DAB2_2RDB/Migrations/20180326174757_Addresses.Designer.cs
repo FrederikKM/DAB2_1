@@ -11,9 +11,10 @@ using System;
 namespace DAB2_2RDB.Migrations
 {
     [DbContext(typeof(Dab2_2RdbContext))]
-    partial class Dab2_2RdbContextModelSnapshot : ModelSnapshot
+    [Migration("20180326174757_Addresses")]
+    partial class Addresses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,22 +33,6 @@ namespace DAB2_2RDB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Addresses");
-                });
-
-            modelBuilder.Entity("DAB2_2RDB.Models.AddressType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("AddressId");
-
-                    b.Property<string>("Type");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AddressId");
-
-                    b.ToTable("AddressTypes");
                 });
 
             modelBuilder.Entity("DAB2_2RDB.Models.Person", b =>
@@ -86,19 +71,6 @@ namespace DAB2_2RDB.Migrations
                     b.ToTable("PersonAddresses");
                 });
 
-            modelBuilder.Entity("DAB2_2RDB.Models.PersonAddressType", b =>
-                {
-                    b.Property<int>("PersonId");
-
-                    b.Property<int>("AddressTypeId");
-
-                    b.HasKey("PersonId", "AddressTypeId");
-
-                    b.HasIndex("AddressTypeId");
-
-                    b.ToTable("PersonAddressTypes");
-                });
-
             modelBuilder.Entity("DAB2_2RDB.Models.PhoneNumber", b =>
                 {
                     b.Property<int>("Id")
@@ -135,13 +107,6 @@ namespace DAB2_2RDB.Migrations
                     b.ToTable("TelephoneCompanies");
                 });
 
-            modelBuilder.Entity("DAB2_2RDB.Models.AddressType", b =>
-                {
-                    b.HasOne("DAB2_2RDB.Models.Address", "Address")
-                        .WithMany("AddressTypes")
-                        .HasForeignKey("AddressId");
-                });
-
             modelBuilder.Entity("DAB2_2RDB.Models.PersonAddress", b =>
                 {
                     b.HasOne("DAB2_2RDB.Models.Address", "Address")
@@ -151,19 +116,6 @@ namespace DAB2_2RDB.Migrations
 
                     b.HasOne("DAB2_2RDB.Models.Person", "Person")
                         .WithMany("PersonAddresses")
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("DAB2_2RDB.Models.PersonAddressType", b =>
-                {
-                    b.HasOne("DAB2_2RDB.Models.AddressType", "AddressType")
-                        .WithMany()
-                        .HasForeignKey("AddressTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("DAB2_2RDB.Models.Person", "Person")
-                        .WithMany()
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

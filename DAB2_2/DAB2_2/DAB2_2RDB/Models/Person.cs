@@ -14,6 +14,7 @@ namespace DAB2_2RDB.Models
         public string Context { get; set; }
         public string Email { get; set; }
 
-        public ICollection<PhoneNumber> PhoneNumbers { get; set; } = new List<PhoneNumber>();
+        public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; } = new List<PhoneNumber>();
+        public virtual ICollection<PersonAddress> PersonAddresses { get; set; } = new List<PersonAddress>();
     }
 }

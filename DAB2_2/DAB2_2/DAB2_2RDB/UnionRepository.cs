@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using DAB2_2RDB.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAB2_2RDB
 {
-    public class Repository<T> where T : BaseEntity
+    public class UnionRepository<T> where T : class
     {
         private readonly DbContext _context;
 
-        public Repository(DbContext context)
+        public UnionRepository(DbContext context)
         {
             _context = context;
         }
@@ -39,19 +43,18 @@ namespace DAB2_2RDB
         /// </summary>
         /// <param name="id">Id to update</param>
         /// <param name="t">Entity with modified values.</param>
-        public void Update(int id, T t)
+        public void Update(T old, T t)
         {
-            if (id != t.Id)
+            try
             {
-                _context.Add<T>(t);
+                if (old != t)
+                {
+                    _context.Add<T>(t);
+                }
             }
-            else if (_context.Find<T>(t.Id) != null)
+            catch (Exception)
             {
-                _context.Update(t);
-            }
-            else
-            {
-                _context.Add(t);
+                // ignored
             }
         }
 
@@ -61,7 +64,7 @@ namespace DAB2_2RDB
         /// <param name="t"></param>
         public void Delete(T t)
         {
-            if (_context.Find<T>(t.Id) == null)
+            if (_context.Find<T>(t) == null)
                 throw new ArgumentException("Entity was not found in db.");
 
             _context.Remove(t);
@@ -95,19 +98,18 @@ namespace DAB2_2RDB
         /// </summary>
         /// <param name="id">Id to update</param>
         /// <param name="t">Entity with modified values.</param>
-        public async Task UpdateAsync(int id, T t)
+        public async Task UpdateAsync(T old, T t)
         {
-            if (id != t.Id)
+            try
             {
-                await _context.AddAsync<T>(t);
+                if (old != t)
+                {
+                    await _context.AddAsync<T>(t);
+                }
             }
-            else if (await _context.FindAsync<T>(t.Id) != null)
+            catch (Exception)
             {
-                _context.Update(t);
-            }
-            else
-            {
-                await _context.AddAsync(t);
+                // ignored
             }
         }
     }
