@@ -20,7 +20,7 @@ namespace DAB2_2RDB
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                @"Data Source =(localDB)\MSSQLLocalDB; Initial Catalog = DAB2_2RDB; Integrated Security = True;");
+                @"Data Source=10.29.0.29;Initial Catalog=F184DABH2Gr24;Integrated Security=False;User ID=F184DABH2Gr24;Password=F184DABH2Gr24;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
