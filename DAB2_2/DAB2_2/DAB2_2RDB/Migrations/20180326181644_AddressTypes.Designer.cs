@@ -11,9 +11,10 @@ using System;
 namespace DAB2_2RDB.Migrations
 {
     [DbContext(typeof(Dab2_2RdbContext))]
-    partial class Dab2_2RdbContextModelSnapshot : ModelSnapshot
+    [Migration("20180326181644_AddressTypes")]
+    partial class AddressTypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,31 +26,13 @@ namespace DAB2_2RDB.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AddressNameId");
-
-                    b.Property<int>("CityId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AddressNameId");
-
-                    b.HasIndex("CityId");
-
-                    b.ToTable("Addresses");
-                });
-
-            modelBuilder.Entity("DAB2_2RDB.Models.AddressName", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
                     b.Property<string>("HouseNumber");
 
                     b.Property<string>("StreetName");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AddressNames");
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("DAB2_2RDB.Models.AddressType", b =>
@@ -66,37 +49,6 @@ namespace DAB2_2RDB.Migrations
                     b.HasIndex("AddressId");
 
                     b.ToTable("AddressTypes");
-                });
-
-            modelBuilder.Entity("DAB2_2RDB.Models.City", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CountryCodeId");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("ZipCode");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountryCodeId")
-                        .IsUnique();
-
-                    b.ToTable("Cities");
-                });
-
-            modelBuilder.Entity("DAB2_2RDB.Models.CountryCode", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Code");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CountryCodes");
                 });
 
             modelBuilder.Entity("DAB2_2RDB.Models.Person", b =>
@@ -117,11 +69,7 @@ namespace DAB2_2RDB.Migrations
 
                     b.Property<string>("MiddleName");
 
-                    b.Property<int?>("PrimaryAddressId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("PrimaryAddressId");
 
                     b.ToTable("Persons");
                 });
@@ -175,24 +123,6 @@ namespace DAB2_2RDB.Migrations
                     b.ToTable("PhoneNumbers");
                 });
 
-            modelBuilder.Entity("DAB2_2RDB.Models.PrimaryAddress", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("AddressNameId");
-
-                    b.Property<int>("CityId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AddressNameId");
-
-                    b.HasIndex("CityId");
-
-                    b.ToTable("PrimaryAddresses");
-                });
-
             modelBuilder.Entity("DAB2_2RDB.Models.TelephoneCompany", b =>
                 {
                     b.Property<int>("Id")
@@ -206,38 +136,11 @@ namespace DAB2_2RDB.Migrations
                     b.ToTable("TelephoneCompanies");
                 });
 
-            modelBuilder.Entity("DAB2_2RDB.Models.Address", b =>
-                {
-                    b.HasOne("DAB2_2RDB.Models.AddressName", "AddressName")
-                        .WithMany()
-                        .HasForeignKey("AddressNameId");
-
-                    b.HasOne("DAB2_2RDB.Models.City", "City")
-                        .WithMany("Addresses")
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("DAB2_2RDB.Models.AddressType", b =>
                 {
                     b.HasOne("DAB2_2RDB.Models.Address", "Address")
                         .WithMany("AddressTypes")
                         .HasForeignKey("AddressId");
-                });
-
-            modelBuilder.Entity("DAB2_2RDB.Models.City", b =>
-                {
-                    b.HasOne("DAB2_2RDB.Models.CountryCode", "CountryCode")
-                        .WithOne("City")
-                        .HasForeignKey("DAB2_2RDB.Models.City", "CountryCodeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("DAB2_2RDB.Models.Person", b =>
-                {
-                    b.HasOne("DAB2_2RDB.Models.PrimaryAddress", "PrimaryAddress")
-                        .WithMany()
-                        .HasForeignKey("PrimaryAddressId");
                 });
 
             modelBuilder.Entity("DAB2_2RDB.Models.PersonAddress", b =>
@@ -276,18 +179,6 @@ namespace DAB2_2RDB.Migrations
                     b.HasOne("DAB2_2RDB.Models.TelephoneCompany", "TelephoneCompany")
                         .WithMany("PhoneNumbers")
                         .HasForeignKey("TelephoneCompanyId");
-                });
-
-            modelBuilder.Entity("DAB2_2RDB.Models.PrimaryAddress", b =>
-                {
-                    b.HasOne("DAB2_2RDB.Models.AddressName", "AddressName")
-                        .WithMany()
-                        .HasForeignKey("AddressNameId");
-
-                    b.HasOne("DAB2_2RDB.Models.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
