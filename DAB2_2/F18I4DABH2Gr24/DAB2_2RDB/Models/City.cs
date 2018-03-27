@@ -14,5 +14,6 @@ namespace DAB2_2RDB.Models
         public virtual ICollection<Address> Addresses { get; set; } = new List<Address>();
 
         public int CountryCodeId { get; set; }
+        public CountryCode CountryCode { get; set; }
     }
 }
