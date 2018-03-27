@@ -15,8 +15,6 @@ namespace DAB2_2
             Task(args).GetAwaiter().GetResult();
         }
 
-
-
         static async Task Task(string[] args)
         {
             var context = new Dab2_2RdbContext();
