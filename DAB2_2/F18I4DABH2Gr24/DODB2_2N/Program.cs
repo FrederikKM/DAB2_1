@@ -36,7 +36,7 @@ namespace DODB2_2N
             Person person1 = new Person
             {
                 Id = "007",
-                Name = new Name{ FirstName = "Ib", MiddleName = "m.Ib", LastName = "L.Ib" },
+                Name = new Name{ FirstName = "Ib", MiddleName = null, LastName = "L.Ib" },
                 Context = "Boss",
                 PrimaryAdress = new Primaryadress
                 {
@@ -73,7 +73,7 @@ namespace DODB2_2N
             Person person2 = new Person
             {
                 Id = "008",
-                Name = new Name{ FirstName = "bob", MiddleName = "m.bob", LastName = "L.bob" },
+                Name = new Name{ FirstName = "bob", MiddleName = null, LastName = "L.bob" },
                 Context = "neighbour",
                 PrimaryAdress = new Primaryadress
                 {
