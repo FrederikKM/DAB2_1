@@ -14,6 +14,8 @@ namespace DAB2_2RDB
         public DbSet<PersonAddressType> PersonAddressTypes { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<CountryCode> CountryCodes { get; set; }
+        public DbSet<PrimaryAddress> PrimaryAddresses { get; set; }
+        public DbSet<AddressName> AddressNames { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -7,7 +7,6 @@ namespace DAB2_2RDB.Models
 {
     public class TelephoneCompany : BaseEntity
     {
-
         [Required]
         public string CompanyName { get; set; }
 

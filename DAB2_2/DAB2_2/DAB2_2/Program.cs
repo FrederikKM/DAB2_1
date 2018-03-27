@@ -58,8 +58,11 @@ namespace DAB2_2
 
             var address = new Address()
             {
-                HouseNumber = "4",
-                StreetName = "Grankrogen"
+                AddressName = new AddressName()
+                {
+                    HouseNumber = "4",
+                    StreetName = "Grankrogen"
+                }
             };
 
             var personAddress = new PersonAddress()
@@ -73,7 +76,7 @@ namespace DAB2_2
                 Type = "Home",
                 Address = address
             };
-            
+
             var personAddressType = new PersonAddressType()
             {
                 Person = person,
@@ -94,6 +97,8 @@ namespace DAB2_2
             };
 
 
+            Console.WriteLine("Creating classes");
+            Console.WriteLine();
 
             // Create
             // Person
@@ -106,12 +111,17 @@ namespace DAB2_2
             await countryCodeRepo.CreateAsync(countryCode);
 
             await uow.SaveAsync();
+            Console.WriteLine("Unit Of Work - Saving...");
+
+            Console.WriteLine("Reading info");
+            Console.WriteLine();
 
             // Read
             person = personRepo.ReadAsync(person.Id).Result;
+            PrintPerson(telephoneCompanyRepo, person, telephoneCompany);
 
-            Console.WriteLine(person.PhoneNumbers.First().Usage);
-
+            Console.WriteLine("Updating info");
+            Console.WriteLine();
 
             // Update
             person.FirstName = "Karsten";
@@ -130,7 +140,12 @@ namespace DAB2_2
 
             await personRepo.UpdateAsync(person.Id, person);
             await uow.SaveAsync();
+            Console.WriteLine("Unit Of Work - Saving...");
 
+            PrintPerson(telephoneCompanyRepo, person, telephoneCompany);
+
+            Console.WriteLine("Deleting Info");
+            Console.WriteLine();
 
             // Delete
             personRepo.Delete(person);
@@ -140,6 +155,41 @@ namespace DAB2_2
             countryCodeRepo.Delete(countryCode);
 
             await uow.SaveAsync();
+            Console.WriteLine("Unit Of Work - Saving...");
+
+
+            try
+            {
+                person = null;
+                person = personRepo.ReadAsync(person.Id).Result;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Person not found...");
+            }
+        }
+
+        private static void PrintPerson(Repository<TelephoneCompany> telephoneCompanyRepo, Person person, TelephoneCompany telephoneCompany)
+        {
+            Console.WriteLine($"Person {person.FirstName} {person.MiddleName} {person.LastName}");
+            Console.WriteLine($"Person Context: {person.Context} | {person.Email}");
+            foreach (var phoneNumber in person.PhoneNumbers)
+            {
+                Console.WriteLine($"   Phonenumbers {phoneNumber.Number} Usage: {phoneNumber.Usage}");
+                Console.WriteLine($"      Company {telephoneCompanyRepo.Read(telephoneCompany.Id).CompanyName}");
+            }
+
+            foreach (var personPersonAddress in person.PersonAddresses)
+            {
+                Console.WriteLine($"   Address {personPersonAddress.Address.AddressName.StreetName} {personPersonAddress.Address.AddressName.HouseNumber}");
+                Console.WriteLine($"   Address Type {personPersonAddress.Address.AddressTypes.SingleOrDefault(p => p.Address == personPersonAddress.Address)?.Type}");
+                Console.WriteLine($"      City {personPersonAddress.Address.City.Name}");
+                Console.WriteLine($"      ZipCode {personPersonAddress.Address.City.ZipCode}");
+                Console.WriteLine($"         Country code {personPersonAddress.Address.City.CountryCode.Code}");
+
+            }
+
+            Console.WriteLine("\n\n");
         }
     }
 }
