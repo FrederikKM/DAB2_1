@@ -28,7 +28,7 @@ namespace DODB2_2N
         public void AddPerson(Person input)
         {
             NewOnes.Add(input);
-            this.WriteToConsoleAndPromptToContinue("Added {0} to queue", input.Name);
+            this.WriteToConsoleAndPromptToContinue("Added {0} to queue", input.Name.FirstName);
         }
 
         public async Task<Person> ReadPerson(Person input)
@@ -40,13 +40,13 @@ namespace DODB2_2N
         public void ChangePerson(Person input)
         {
             UpdatedOnes.Add(input);
-            this.WriteToConsoleAndPromptToContinue("added {0} to change queue", input.Name);
+            this.WriteToConsoleAndPromptToContinue("added {0} to change queue", input.Name.FirstName);
         }
 
         public void DeletePerson(Person input)
         {
             RemovedOnes.Add(input);
-            this.WriteToConsoleAndPromptToContinue("Added {0} to Deletequeue", input.Name);
+            this.WriteToConsoleAndPromptToContinue("Added {0} to Deletequeue", input.Name.FirstName);
         }
 
         public async Task DoChanges()

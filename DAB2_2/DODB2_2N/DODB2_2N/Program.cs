@@ -12,7 +12,7 @@ namespace DODB2_2N
 {
     class Program
     {
-       public static IReliableReadWriteDocumentClient Client { get; set; }
+        public static IReliableReadWriteDocumentClient Client { get; set; }
         static void Main(string[] args)
         {
             IDocumentDbInitializer init = new DocumentDbInitializer();
@@ -36,25 +36,26 @@ namespace DODB2_2N
             Person person1 = new Person
             {
                 Id = "007",
-                Name = "Ib",
+                Name = new Name{ FirstName = "Ib", MiddleName = "m.Ib", LastName = "L.Ib" },
+                Context = "Boss",
                 PrimaryAdress = new Primaryadress
                 {
-                    Adressname = "adress1",
-                    City = new City { Name = "Skandeborg", ZipCode = new Zipcode { Code = "8660", CountryCode = "DK" } }
+                    AdressName = new AdressName { StreetName = "søndergade", HouseNumber = "12B" },
+                    City = new City { Name = "Skandeborg", CityCode = "8660", CountryCode = "DK" } 
                 },
                 SecondaryAdress = new Secondaryadress[]
                 {
                     new Secondaryadress
                     {
-                        Adressname = "seconadre1",
+                        AdressName=new AdressName{StreetName = "Østervej",HouseNumber = "14"},
                         AdressType = "Work",
-                        City = new City {Name = "Stilling", ZipCode = new Zipcode {Code = "8660", CountryCode = "DK"}}
+                        City = new City {Name = "Stilling", CityCode = "8660", CountryCode = "DK"}
                     },
                     new Secondaryadress
                     {
-                        Adressname = "seconadre2",
+                        AdressName=new AdressName{StreetName = "Vestergade",HouseNumber = "12A"},
                         AdressType = "Holiday",
-                        City = new City {Name = "Sønderborg", ZipCode = new Zipcode {Code = "6400", CountryCode = "DK"}}
+                        City = new City {Name = "Sønderborg", CityCode = "6400", CountryCode = "DK"}
                     },
                 },
                 TelephoneNumbers = new Telephonenumber[]
@@ -72,25 +73,26 @@ namespace DODB2_2N
             Person person2 = new Person
             {
                 Id = "008",
-                Name="Bob",
+                Name = new Name{ FirstName = "bob", MiddleName = "m.bob", LastName = "L.bob" },
+                Context = "neighbour",
                 PrimaryAdress = new Primaryadress
                 {
-                    Adressname = "adress1",
-                    City = new City { Name = "Aarhus N", ZipCode = new Zipcode { Code = "8200", CountryCode = "DK" } }
+                    AdressName = new AdressName{ StreetName = "søndergade", HouseNumber = "12A" },
+                    City = new City { Name = "Aarhus N", CityCode = "8200", CountryCode = "DK" } 
                 },
                 SecondaryAdress = new Secondaryadress[]
                 {
                     new Secondaryadress
                     {
-                        Adressname = "seconadre10",
+                        AdressName=new AdressName{StreetName = "ØsterGade",HouseNumber = "10A"},
                         AdressType = "Work",
-                        City = new City {Name = "Aarhus V", ZipCode = new Zipcode {Code = "8210", CountryCode = "DK"}}
+                        City = new City {Name = "Aarhus V", CityCode = "8210", CountryCode = "DK"}
                     },
                     new Secondaryadress
                     {
-                        Adressname = "seconadre20",
+                        AdressName=new AdressName{StreetName = "Ågade",HouseNumber = "10"},
                         AdressType = "Holiday",
-                        City = new City {Name = "Aarhus C", ZipCode = new Zipcode {Code = "8000", CountryCode = "DK"}}
+                        City = new City {Name = "Aarhus C", CityCode = "8000", CountryCode = "DK"}
                     },
                 },
                 TelephoneNumbers = new Telephonenumber[]
@@ -102,7 +104,7 @@ namespace DODB2_2N
             };
 
             // add jack to collection
-            
+
             UOW.AddPerson(person2);
             await UOW.DoChanges();
             //System.Threading.Thread.Sleep(20000);
@@ -110,9 +112,10 @@ namespace DODB2_2N
             //Console.WriteLine(justMatt);
 
 
-            // update first name
-            person1.Name = "Matt";
-
+            // update name
+            person1.Name.FirstName = "matt";
+            person1.Name.MiddleName = "matt.M";
+            person1.Name.LastName = "matt.L";
             // should update person
             UOW.ChangePerson(person1);
             await UOW.DoChanges();

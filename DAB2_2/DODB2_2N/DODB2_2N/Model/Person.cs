@@ -7,8 +7,10 @@ namespace DODB2_2N.Model
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
+        [JsonProperty(PropertyName = "context")]
+        public string Context { get; set; }
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public Name Name { get; set; }
         [JsonProperty(PropertyName = "telephoneNumbers")]
         public Telephonenumber[] TelephoneNumbers { get; set; }
         [JsonProperty(PropertyName = "primaryAdress")]
@@ -21,12 +23,31 @@ namespace DODB2_2N.Model
         }
     }
 
+    public class Name
+    {
+        [JsonProperty(PropertyName = "firstName")]
+        public string FirstName { get; set; }
+        [JsonProperty(PropertyName = "middleName")]
+        public string MiddleName { get; set; }
+        [JsonProperty(PropertyName = "lastName")]
+        public string LastName { get; set; }
+
+    }
+
     public class Primaryadress
     {
-        [JsonProperty(PropertyName = "adressname")]
-        public string Adressname { get; set; }
+        [JsonProperty(PropertyName = "adressName")]
+        public AdressName AdressName { get; set; }
         [JsonProperty(PropertyName = "city")]
         public City City { get; set; }
+    }
+
+    public class AdressName
+    {
+        [JsonProperty(PropertyName = "streetName")]
+        public string StreetName { get; set; }
+        [JsonProperty(PropertyName = "houseNumber")]
+        public string HouseNumber { get; set; }
     }
 
     public class Telephonenumber
@@ -39,8 +60,8 @@ namespace DODB2_2N.Model
 
     public class Secondaryadress
     {
-        [JsonProperty(PropertyName = "adressname")]
-        public string Adressname { get; set; }
+        [JsonProperty(PropertyName = "adressName")]
+        public AdressName AdressName { get; set; }
         [JsonProperty(PropertyName = "adressType")]
         public string AdressType { get; set; }
         [JsonProperty(PropertyName = "city")]
@@ -51,14 +72,8 @@ namespace DODB2_2N.Model
     {
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-        [JsonProperty(PropertyName = "zipCode")]
-        public Zipcode ZipCode { get; set; }
-    }
-
-    public class Zipcode
-    {
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; set; }
+        [JsonProperty(PropertyName = "cityCode")]
+        public string CityCode { get; set; }
         [JsonProperty(PropertyName = "countryCode")]
         public string CountryCode { get; set; }
     }
