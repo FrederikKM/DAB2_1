@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="DAB2_2RDB.Models.Address">
+    <Position X="6.25" Y="0.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAIAAAIAAAAAAAAAAAAAAAAAAQAACA=</HashCode>
+      <FileName>Models\Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAB2_2RDB.Models.AddressName">
+    <Position X="8.25" Y="8.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AddressName.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAB2_2RDB.Models.AddressType">
+    <Position X="2.25" Y="10.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>Models\AddressType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAB2_2RDB.Models.City">
+    <Position X="5" Y="10.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAACAAAQAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\City.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAB2_2RDB.Models.CountryCode">
+    <Position X="5.5" Y="13" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CountryCode.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="City" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAB2_2RDB.Models.Person">
+    <Position X="2.25" Y="5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAjAAAAAAAAAQQAAAAAAAAAAAAAAAAAAAACg=</HashCode>
+      <FileName>Models\Person.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PrimaryAddress" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAB2_2RDB.Models.PersonAddress">
+    <Position X="5.75" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QIAAAAAAAAAAAAAEAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PersonAddress.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Person" />
+      <Property Name="Address" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAB2_2RDB.Models.PersonAddressType">
+    <Position X="2.5" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Models\PersonAddressType.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Person" />
+      <Property Name="AddressType" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAB2_2RDB.Models.PhoneNumber">
+    <Position X="2.5" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAEAAAAAEAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Models\PhoneNumber.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Person" />
+      <Property Name="TelephoneCompany" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAB2_2RDB.Models.PrimaryAddress">
+    <Position X="5.5" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAIAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PrimaryAddress.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AddressName" />
+      <Property Name="City" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAB2_2RDB.Models.TelephoneCompany">
+    <Position X="1.25" Y="0.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\TelephoneCompany.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAB2_2RDB.Repository&lt;T&gt;">
+    <Position X="10.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAAAAABAAAAAAAAAAgAAEAAEgAAAAAAIAAAAA=</HashCode>
+      <FileName>Repository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAB2_2RDB.UnionRepository&lt;T&gt;">
+    <Position X="12.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAAAAABAAAAAAAAAAgAAEAAEgAAAAAAIAAAAA=</HashCode>
+      <FileName>UnionRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAB2_2RDB.UnitOfWork">
+    <Position X="8.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAgAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
